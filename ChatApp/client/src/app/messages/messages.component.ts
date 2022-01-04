@@ -16,5 +16,4 @@ export class MessagesComponent implements OnInit {
       this.messages = m;
     })
   }
-
 }
