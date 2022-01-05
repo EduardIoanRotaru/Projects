@@ -25,11 +25,11 @@ export class TaskService {
 		);
 	}
 
-	getTasks() {
+	getFeedPost() {
 		return this.tasksLists;
 	}
 
-	addTask(task: any) {
+	addFeedPost(task: any) {
 		return this.tasksCollection.add(task);
 	}
 

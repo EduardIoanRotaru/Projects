@@ -9,12 +9,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { TaskComponent } from './task/task.component';
+import { FeedComponent } from './task/feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    FeedComponent
   ],
   imports: [
     BrowserModule,
