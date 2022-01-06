@@ -1,4 +1,13 @@
 **/node_modules
 **/environment.ts
 **/obj
+obj/
 **/bin
+bin/
+QuizApp/QuizWebApi/QuizSolution/packages
+QuizApp/QuizWebApi/QuizSolution/QuizApp/bin
+QuizApp/QuizWebApi/QuizSolution/QuizApp/obj
+QuizApp/QuizWebApi/QuizSolution/Infrastructure/bin/
+QuizApp/QuizWebApi/QuizSolution/Infrastructure/obj
+QuizApp/QuizWebApi/QuizSolution/Core/obj
+QuizApp/QuizWebApi/QuizSolution/Core/bin
