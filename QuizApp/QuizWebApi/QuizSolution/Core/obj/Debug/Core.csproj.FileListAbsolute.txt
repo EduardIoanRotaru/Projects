@@ -1,5 +1,0 @@
-F:\Projects\QuizApp\QuizWebApi\QuizSolution\Core\bin\Debug\Core.dll
-F:\Projects\QuizApp\QuizWebApi\QuizSolution\Core\bin\Debug\Core.pdb
-F:\Projects\QuizApp\QuizWebApi\QuizSolution\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
-F:\Projects\QuizApp\QuizWebApi\QuizSolution\Core\obj\Debug\Core.dll
-F:\Projects\QuizApp\QuizWebApi\QuizSolution\Core\obj\Debug\Core.pdb

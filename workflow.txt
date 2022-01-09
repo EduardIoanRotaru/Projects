@@ -1,0 +1,21 @@
+Workflow
+
+Create database Schemas
+Seed Data
+
+Authorization and Authentification for each project
+Repository Pattern and Specification Pattern
+Automapper
+DTO's
+Services
+Controllers
+
+Chat App resources
+Public Chat
+https://www.youtube.com/watch?v=5iN1jhr6yQI&ab_channel=RawCoding
+https://medium.com/linkit-intecs/how-to-create-a-chat-app-with-asp-net-core-3-1-signalr-and-angular-10-a7fde1e70933
+
+
+One to one chat
+https://www.youtube.com/watch?v=3_vl5W6NjUE&ab_channel=KalpeshSatasiya
+https://stackoverflow.com/questions/65568240/how-can-i-make-one-to-one-chat-system-in-asp-net-core-mvc-signalr
