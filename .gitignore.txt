@@ -4,6 +4,10 @@
 obj/
 **/bin
 bin/
+*.dll
+*.pdb
+*.cache
+*.exe
 QuizApp/QuizWebApi/QuizSolution/packages
 QuizApp/QuizWebApi/QuizSolution/QuizApp/bin
 QuizApp/QuizWebApi/QuizSolution/QuizApp/obj

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "fZ8rjXtqvbReVRK9uznP+PaJFhE2+Uf+w+MHDH5FQlvnLmaFLypvGlnslhxpVTisdU1a5oWCvXvHwhTY8yyanQ==",
+  "dgSpecHash": "fZEvG1B1YC4f8P+i2yNWJbXrP4/vjT2/7zVP+/1jifD6usufkg4D8K0oLeStlQwupYUA1UfXL+uL0pRUeryP6Q==",
   "success": true,
-  "projectFilePath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
+  "projectFilePath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ioane\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\ioane\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
