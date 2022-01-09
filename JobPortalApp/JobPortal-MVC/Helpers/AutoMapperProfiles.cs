@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Core.Entities;
-using JobPortal_MVC.DTO;
 
 namespace JobPortal_MVC.Helpers
 {
@@ -8,7 +7,7 @@ namespace JobPortal_MVC.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<JobDto, JobDto>();
+            CreateMap<Job, JobDto>();
         }
     }
 }

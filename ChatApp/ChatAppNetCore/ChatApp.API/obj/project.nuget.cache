@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fZEvG1B1YC4f8P+i2yNWJbXrP4/vjT2/7zVP+/1jifD6usufkg4D8K0oLeStlQwupYUA1UfXL+uL0pRUeryP6Q==",
+  "dgSpecHash": "g0VT9nyM03RegL/lVqopG85iBW+zlpTdKvNgoKpgBYRwzgF0aPyN0KBQhPIaNWHcyNE4TFmccAEyNp0PkrKgKQ==",
   "success": true,
-  "projectFilePath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
+  "projectFilePath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ioane\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

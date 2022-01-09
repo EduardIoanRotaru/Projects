@@ -1846,11 +1846,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\ioane\\.nuget\\packages\\",
-      "outputPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\obj\\",
+      "outputPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1871,8 +1871,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
-              "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj"
+            "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
+              "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj"
             }
           }
         }

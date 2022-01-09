@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj": {}
+    "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj": {}
   },
   "projects": {
-    "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj": {
+    "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
+        "projectUniqueName": "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
         "projectName": "ChatApp.API",
-        "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
+        "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\ChatApp.API.csproj",
         "packagesPath": "C:\\Users\\ioane\\.nuget\\packages\\",
-        "outputPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\obj\\",
+        "outputPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\ChatApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj"
+              "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
+    "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj",
+        "projectUniqueName": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj",
+        "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\ioane\\.nuget\\packages\\",
-        "outputPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\obj\\",
+        "outputPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -141,14 +141,14 @@
         }
       }
     },
-    "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj": {
+    "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\ioane\\.nuget\\packages\\",
-        "outputPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\obj\\",
+        "outputPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -169,8 +169,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
-                "projectPath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj"
+              "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj": {
+                "projectPath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Core\\Core.csproj"
               }
             }
           }

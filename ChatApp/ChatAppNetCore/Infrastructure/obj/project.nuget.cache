@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4zppqu5YYxEsUPu2ZLm6eEIS1kiuhTLvr0qb+vXjzXWs6N2s+1YqInmkN87RzFt/VXM8n2n4wTJMQWY5cIWqPA==",
+  "dgSpecHash": "zrDx27b75cggs8Yet75rwUepXmfbbHhjWe9S2veqHXARDnVxJJ7QgLgZ5o76y/taktJE2vXp0JoMmyo9WeKATQ==",
   "success": true,
-  "projectFilePath": "f:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "F:\\Projects\\ChatApp\\ChatAppNetCore\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ioane\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
