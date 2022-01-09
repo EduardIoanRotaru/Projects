@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "07afe279-4dc1-43ab-87d3-4b855dc82edf": {
+      "ProjectGuid": "07afe279-4dc1-43ab-87d3-4b855dc82edf",
+      "DisplayName": "Shop.API",
+      "ColorIndex": 0
+    },
+    "e7d43788-b087-46fd-a80a-4c0f464289c9": {
+      "ProjectGuid": "e7d43788-b087-46fd-a80a-4c0f464289c9",
+      "DisplayName": "Infrastructure",
+      "ColorIndex": 1
+    },
+    "1edb6b30-87cf-427e-9321-cf4a94f80d1b": {
+      "ProjectGuid": "1edb6b30-87cf-427e-9321-cf4a94f80d1b",
+      "DisplayName": "Core",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

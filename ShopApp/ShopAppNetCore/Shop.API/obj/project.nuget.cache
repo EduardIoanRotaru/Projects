@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "BImLrAfxGzmFvR/F5OIitLHdqt6rE/0nhVKf4Tki5L6fxRqtwTCRDdklLfh/REXKz/gkTfnOMbTU/LPGuRMAXg==",
+  "dgSpecHash": "Y4niri8lH551TkOTKjRqi/p5Hdeozd53KHwHqzwXB+fJoHiB9+nXMc2mf2R+5Kh+VEkAwoqLP0pNajd0jFIWrA==",
   "success": true,
   "projectFilePath": "F:\\Projects\\ShopApp\\ShopAppNetCore\\Shop.API\\Shop.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ioane\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
