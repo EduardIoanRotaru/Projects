@@ -1,0 +1,63 @@
+Workflow
+
+Create database Schemas
+Seed Data
+
+Authorization and Authentification for each project
+Repository Pattern and Specification Pattern
+Automapper
+DTO's
+Services
+Controllers
+
+Chat App resources
+Public Chat
+https://www.youtube.com/watch?v=5iN1jhr6yQI&ab_channel=RawCoding
+https://medium.com/linkit-intecs/how-to-create-a-chat-app-with-asp-net-core-3-1-signalr-and-angular-10-a7fde1e70933
+
+
+One to one chat
+https://www.youtube.com/watch?v=3_vl5W6NjUE&ab_channel=KalpeshSatasiya
+https://stackoverflow.com/questions/65568240/how-can-i-make-one-to-one-chat-system-in-asp-net-core-mvc-signalr
+
+...................................................................... 09.01.2022
+
+Done - Database Relationships - First UML on paper 
+Add Entities 
+Update DataContext
+Add Dtos
+AutoMapper
+
+Sort out the .gitignore and remove all the useless files in repo
+
+...................................................................... 11.01.2022
+
+Custom modelbuilder where needed
+
+Add Authentication and Authorization business logic(jwt, Identity, OAuth2 or simply cookies/localstorage)
+Postman test each one
+
+Add Login/Register html page for all projects
+Add branches for each project backend
+
+Seed Data
+
+...................................................................... 13.01.2022
+
+Add repository pattern or specification pattern where necessary
+Chat app, add general chat, list of users, private chat, emoticons. No auth, only localstorage
+
+...................................................................... 14.01.2022
+
+Filter, Pagination, Sort, Search where needed
+CRUD where needed
+
+All components in Angular, lazy loading and routing 
+"Design" all html pages 
+
+Services 
+Components business logic
+
+...................................................................... 21.01.2022
+
+Deploy all
