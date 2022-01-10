@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "9WTMpjXAJiQmqU4iF3OqdeKA1SAz92HLTPGV2z0v6AIfiUHViK95+ZiYHe5H4xH2Dd/+cAVSRmVMI4Ja9EKONw==",
+  "dgSpecHash": "k/vHkVIBxijMKGrjkrkZYx4ReaB3K9K5gDOLuJflZzAkMUJkS3XbbAAoEJ/y4AB2r1i3AFZ8Uu/QpE6XKcyheA==",
   "success": true,
   "projectFilePath": "F:\\Projects\\ToDoApp\\ToDoAPI\\ToDoAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ioane\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\ioane\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\ioane\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\ioane\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",

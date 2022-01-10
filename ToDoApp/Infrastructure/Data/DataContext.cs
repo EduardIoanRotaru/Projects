@@ -1,3 +1,4 @@
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -8,6 +9,7 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<Task> Tasks {get;set;}
+        public DbSet<Core.Entities.Task> Tasks {get;set;}
+        public DbSet<Comment> Comments{get;set; }
     }
 }

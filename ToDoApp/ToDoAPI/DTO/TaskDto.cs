@@ -1,11 +1,11 @@
-﻿namespace Core.Entities
+﻿namespace ToDoAPI.DTO
 {
-    public class Task
+    public class TaskDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
     }
 }
