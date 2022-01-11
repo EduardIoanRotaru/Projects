@@ -46,6 +46,8 @@ Add branches for each project backend
 
 Seed Data
 
+Git merge branches with master
+
 ...................................................................... 13.01.2022
 
 Add repository pattern or specification pattern where necessary
