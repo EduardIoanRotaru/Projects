@@ -1,5 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> ToDoApp
 
 namespace Core.Entities.UserProfile
 {

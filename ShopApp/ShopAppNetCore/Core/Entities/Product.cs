@@ -6,9 +6,14 @@ namespace Core.Entities
         public int Discount { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
+<<<<<<< HEAD
         public Image Image { get; set; }
         public int CategoryId {get;set;}
         public Category Category{get;set;}
         public ICollection<Size> Sizes{ get; set; }
+=======
+
+        public Image Image { get; set; }
+>>>>>>> ToDoApp
     }
 }

@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BA514B33-5919-432A-8F36-5D3DEE6E49E6}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp", "QuizApp\QuizApp.csproj", "{2474B1CC-C563-40F4-8028-75BEBE9016E4}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizWebApi", "QuizWebApi\QuizWebApi.csproj", "{5C50C07E-2A1B-41BE-8731-40432F9F3C56}"
+>>>>>>> ToDoApp
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,17 @@ Global
 		{BA514B33-5919-432A-8F36-5D3DEE6E49E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA514B33-5919-432A-8F36-5D3DEE6E49E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA514B33-5919-432A-8F36-5D3DEE6E49E6}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{2474B1CC-C563-40F4-8028-75BEBE9016E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2474B1CC-C563-40F4-8028-75BEBE9016E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2474B1CC-C563-40F4-8028-75BEBE9016E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2474B1CC-C563-40F4-8028-75BEBE9016E4}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{5C50C07E-2A1B-41BE-8731-40432F9F3C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C50C07E-2A1B-41BE-8731-40432F9F3C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C50C07E-2A1B-41BE-8731-40432F9F3C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C50C07E-2A1B-41BE-8731-40432F9F3C56}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> ToDoApp
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
