@@ -1,0 +1,55 @@
+Expression trees
+https://www.youtube.com/watch?v=Glfz0FDPfXk
+https://www.youtube.com/watch?v=Ptnxc6tVIPE
+
+Documentation
+https://docs.microsoft.com/en-us/ef/core/change-tracking/
+https://docs.microsoft.com/en-us/ef/core/change-tracking/relationship-changes
+https://docs.microsoft.com/en-us/ef/core/querying/related-data/
+https://docs.microsoft.com/en-us/ef/ef6/querying/related-data
+https://docs.microsoft.com/en-us/ef/core/querying/related-data/eager
+https://docs.microsoft.com/en-us/ef/ef6/saving/change-tracking/entity-state
+https://docs.microsoft.com/en-us/ef/ef6/saving/transactions
+https://docs.microsoft.com/en-us/ef/ef6/saving/validation
+
+Design Patterns
+https://www.youtube.com/watch?v=EcFVTgRHJLM&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=9
+
+Tips
+https://www.youtube.com/watch?v=ifTF3ags0XI&t=9s
+
+OAuth
+https://www.youtube.com/watch?v=NRU_KdUSjD4&ab_channel=ValentinDespa
+
+SignalR
+https://github.com/shivam01990/SignalR-private-one-to-one-chat/blob/master/SignalRPrivateChat/SignalRPrivateChat/ChatHelper/ChatHub.cs
+https://www.youtube.com/watch?v=3_vl5W6NjUE
+https://stackoverflow.com/questions/65568240/how-can-i-make-one-to-one-chat-system-in-asp-net-core-mvc-signalr
+https://stackoverflow.com/questions/47145436/chat-one-to-one-using-asp-net-core-signalr-and-angular-2
+https://stackoverflow.com/questions/57057936/multiple-single-chat-rooms-using-signalr-asp-net-core
+https://www.youtube.com/watch?v=Qa4qmB9iNNQ&ab_channel=LaughingTechnologies%28OkTests.com%29
+https://stackoverflow.com/questions/66885048/send-message-to-specific-user-signalr
+https://stackoverflow.com/questions/61647265/send-a-message-to-only-one-user-with-signalr
+https://www.youtube.com/watch?v=V8tULZM5qNM
+https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/tutorial-getting-started-with-signalr
+https://www.codeproject.com/Articles/1100425/SignalR-with-ASP-NET-One-to-one-and-Group-Chat-wit
+https://www.tech-coder.com/2021/04/aspnet-core-signalr-2-one-to-one-chat.html
+https://santexgroup.com/blog/signalr-chat-spa/
+https://stackoverflow.com/questions/55037167/integrate-emoji-in-angular-6-chat-application
+https://www.npmjs.com/package/@ctrl/ngx-emoji-mart
+https://stackoverflow.com/questions/51536262/angular-6-saving-data-to-local-storage
+
+git
+https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches
+https://www.atlassian.com/git/tutorials/using-branches/git-checkout
+
+
+Chat App resources
+Public Chat
+https://www.youtube.com/watch?v=5iN1jhr6yQI&ab_channel=RawCoding
+https://medium.com/linkit-intecs/how-to-create-a-chat-app-with-asp-net-core-3-1-signalr-and-angular-10-a7fde1e70933
+
+
+One to one chat
+https://www.youtube.com/watch?v=3_vl5W6NjUE&ab_channel=KalpeshSatasiya
+https://stackoverflow.com/questions/65568240/how-can-i-make-one-to-one-chat-system-in-asp-net-core-mvc-signalr

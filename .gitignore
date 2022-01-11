@@ -1,0 +1,11 @@
+node_modules
+obj
+bin
+appsettings.json
+appsettings.Development.json
+.vs
+.vscode	
+web.config
+packages
+environment.prod.ts
+environment.ts
