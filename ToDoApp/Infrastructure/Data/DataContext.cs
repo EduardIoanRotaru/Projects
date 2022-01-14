@@ -11,5 +11,7 @@ namespace Infrastructure.Data
 
         public DbSet<Core.Entities.Task> Tasks {get;set;}
         public DbSet<Comment> Comments{get;set; }
+
+        public DbSet<User> Users {get;set;}
     }
 }
