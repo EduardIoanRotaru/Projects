@@ -37,7 +37,19 @@ Done - Fix QuizApp reference problem (Removed class library projects)
 Done - ShopApp fix the one-to-many problems
 Done - Finish ToDoApp table generation
 
-Check resources for Authentication and Authorization
+Done - Check resources for Authentication and Authorization
+
+Finish ToDoApp
+	Done - Add Angular routing
+	Seed Data with umpcoming tasks and projects
+	Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
+	Upcoming - Logged in, add tasks with calendar date, display them by date. 
+	Projects - Logged in, add a project name, description + tasks
+	Add comments to tasks.
+	Hide completed or not
+	Add priority
+	Final touches for design 
+
 Add Authentication and Authorization business logic(jwt, Identity, OAuth2 or simply cookies/localstorage)
 Postman test each one
 

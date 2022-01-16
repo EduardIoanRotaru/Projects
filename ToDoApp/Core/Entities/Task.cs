@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime ExpirationDate { get; set; }
+        public DateTime DateToComplete { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public Label Label {get;set;}
     }
 }

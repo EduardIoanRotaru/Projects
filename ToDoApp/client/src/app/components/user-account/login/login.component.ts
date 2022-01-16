@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { OurToastrService } from 'src/app/shared/services/toastr.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private toastrService: OurToastrService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -21,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.authService.login(this.loginForm.value).subscribe(
-      next => console.log("logged in"),
-      error => console.log("login failed")
+      next => this.toastrService.showSuccess('login successful'),
+      error => this.toastrService.showError(`login failed + \n${error}`)
     );
   }
 }

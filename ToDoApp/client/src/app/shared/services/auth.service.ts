@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -7,10 +8,11 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class AuthService {
-	url:string = 'https://localhost:7284/api/auth/';
-	isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+	url: string = 'https://localhost:7284/api/auth/';
+	isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.loggedIn());
+	decodedToken: any;
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
 	login(model: any) {
 		return this.http.post<any>(this.url + 'login', model).pipe(
@@ -18,6 +20,7 @@ export class AuthService {
 				const user = response;
 				if (user) {
 					localStorage.setItem('token', user.token);
+					this.decodedToken = this.jwtHelper.decodeToken(user.name);
 					this.isLoggedIn.next(true);
 				}
 			})
@@ -30,12 +33,12 @@ export class AuthService {
 
 	loggedIn() {
 		const token = localStorage.getItem('token');
-		return !!token;
+		return token !== null ? this.jwtHelper.isTokenExpired(token) : false;
 	}
 
 	logOut() {
 		localStorage.removeItem('token');
+		this.decodedToken = undefined;
 		this.isLoggedIn.next(false);
-		console.log('logged out');
 	}
 }
