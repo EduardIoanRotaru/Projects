@@ -31,7 +31,7 @@ Done - Sort out the .gitignore and remove all the useless files in repo
 ...................................................................... 11.01.2022
 
 Generate all tables
-Custom modelbuilder where needed - e.g oncascade delete
+
 
 Done - Fix QuizApp reference problem (Removed class library projects)
 Done - ShopApp fix the one-to-many problems
@@ -41,7 +41,9 @@ Done - Check resources for Authentication and Authorization
 
 Finish ToDoApp
 	Done - Add Angular routing
-	Seed Data with umpcoming tasks and projects
+	Seed Data with umpcoming tasks and projects,
+		Done - Not Clear of relationships: Project with many tasks not right in db
+
 	Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
 	Upcoming - Logged in, add tasks with calendar date, display them by date. 
 	Projects - Logged in, add a project name, description + tasks
@@ -56,6 +58,7 @@ Postman test each one
 Add Login/Register html page for all projects
 Add branches for each project backend
 
+Custom modelbuilder where needed - e.g oncascade delete
 Seed Data
 
 Git merge branches with master
@@ -79,8 +82,6 @@ Components business logic
 ...................................................................... 21.01.2022
 
 Deploy all
-
-relatii.publice@dsparad.ro
 
 -------------------------------------------------------------------------- Commands to keep in mind
 dotnet-ef migrations add InitialCreate -o Data -s ../ToDoAPI

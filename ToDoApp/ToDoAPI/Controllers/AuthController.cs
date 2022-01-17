@@ -35,6 +35,7 @@ namespace ToDoAPI.Controllers
             var newUser = new User
             {
                 Username = userForRegisterDto.Username,
+                Email = userForRegisterDto.Email,
             };
 
             var createdUser = await _authRepository.Register(newUser, userForRegisterDto.Password);

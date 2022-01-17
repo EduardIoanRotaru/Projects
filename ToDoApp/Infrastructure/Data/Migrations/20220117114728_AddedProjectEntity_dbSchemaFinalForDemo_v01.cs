@@ -4,7 +4,7 @@
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class AddedEmail : Migration
+    public partial class AddedProjectEntity_dbSchemaFinalForDemo_v01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
