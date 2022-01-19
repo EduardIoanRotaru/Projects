@@ -1,0 +1,13 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <input type="text" id="commentText" formControlName="commentText" class="form-control" placeholder="Write a comment">
+    <button *ngIf="!editMode" type="submit">Add Comment</button>
+    <button *ngIf="editMode" type="button" (click)="editComment()">Edit Comment</button>
+    <button *ngIf="editMode" type="button" (click)="cancelEditMode()">Cancel</button>
+</form>
+
+<ul class="list-group" *ngFor="let item of taskObj.tasks[taskObj.index].comments;let i = index">
+    <li class="list-group-item">{{item.commentText}}
+        <button type="button" class="btn btn-danger float-right ml-2" (click)="removeCommentFromTask(i)">Remove</button>
+        <button type="button" class="btn btn-primary float-right ml-2" (click)="enableEditComment(i)">Edit</button>
+    </li>
+</ul>

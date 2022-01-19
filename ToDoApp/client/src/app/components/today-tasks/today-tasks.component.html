@@ -1,1 +1,21 @@
-<p>today-tasks works!</p>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Task Name">
+    <select formControlName="label">
+        <option value='' disabled selected>Priority</option>
+        <option *ngFor="let name of keys" [value]="name" > {{priorityEnum[name]}} </option>
+        </select>
+    <button *ngIf="!editMode" type="submit">Add New Task</button>
+    <button *ngIf="editMode" type="button" (click)="editTask()">Edit Task</button>
+</form>
+
+<ul class="list-group" *ngFor="let item of todayTasks;let i = index">
+    <li class="list-group-item" [ngClass]="{'list-group-item-danger':item.label == 0,
+                                            'list-group-item-warning': item.label == 1, 
+                                            'list-group-item-info':item.label == 2}">
+        {{item.name}}
+        <button type="button" class="btn btn-danger float-right ml-2" (click)="removeItem(i)">Remove</button>
+        <button type="button" class="btn btn-primary float-right ml-2" (click)="enableEditTask(item, i)">Edit</button>
+        <button class="btn btn-info float-right"(click)="displayCommentsComponent(i)">Comments</button>
+    </li>
+    <app-today-tasks-comments id="{{'tasksComment' + i}}" *ngIf="showCommentComponent[i]" [taskObj]="{tasks: todayTasks, index: i}"></app-today-tasks-comments> 
+</ul>

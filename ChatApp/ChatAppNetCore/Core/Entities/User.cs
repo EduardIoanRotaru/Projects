@@ -1,11 +1,7 @@
 namespace Core.Entities
 {
     public class User : BaseEntity
-<<<<<<< HEAD
     {      
-=======
-    {
-        
->>>>>>> ChatApp
+        public string Email { get; set; }
     }
 }

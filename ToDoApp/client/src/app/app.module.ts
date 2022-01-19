@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { TodayTasksComponent } from './components/today-tasks/today-tasks.component';
 import { UpcomingTasksComponent } from './components/upcoming-tasks/upcoming-tasks.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { TodayTasksCommentsComponent } from './components/today-tasks/today-tasks-comments/today-tasks-comments.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -32,6 +33,7 @@ export function tokenGetter() {
     RegisterComponent,
     TodayTasksComponent,
     UpcomingTasksComponent,
+    TodayTasksCommentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,16 +41,21 @@ Done - Check resources for Authentication and Authorization
 
 Finish ToDoApp
 	Done - Add Angular routing
-	Seed Data with umpcoming tasks and projects,
+	Done - Seed Data with umpcoming tasks and projects,
 		Done - Not Clear of relationships: Project with many tasks not right in db
 
-	Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
+	Done - Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
+	Add comments to today tasks.
 	Upcoming - Logged in, add tasks with calendar date, display them by date. 
 	Projects - Logged in, add a project name, description + tasks
-	Add comments to tasks.
+
 	Hide completed or not
 	Add priority
 	Final touches for design 
+
+	Features - Add other users to projects
+		 - Assign today tasks to a Project
+		 - Adding a date, except today will move it in upcoming tasks.
 
 Add Authentication and Authorization business logic(jwt, Identity, OAuth2 or simply cookies/localstorage)
 Postman test each one
