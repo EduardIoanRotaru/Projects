@@ -1,12 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { IComment } from 'src/app/shared/models/IComment';
 import { ITodayTask } from 'src/app/shared/models/ITodayTasks';
-import { CommentService } from 'src/app/shared/services/comment.service';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { OurToastrService } from 'src/app/shared/services/toastr.service';
-
 @Component({
   selector: 'app-today-tasks-comments',
   templateUrl: './today-tasks-comments.component.html',
@@ -14,6 +11,7 @@ import { OurToastrService } from 'src/app/shared/services/toastr.service';
 })
 export class TodayTasksCommentsComponent implements OnInit {
   @Input() taskObj: {tasks: ITodayTask[], index: number};
+  @Output() closeTaskCommentSection: EventEmitter<number> = new EventEmitter();
 
   commentForm: FormGroup;
   commentFormInitial: FormGroup;
@@ -25,6 +23,10 @@ export class TodayTasksCommentsComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
+
+  get commentText() {
+		return this.commentForm.get('commentText');
+	}
 
   onSubmit() {
 		this.taskObj.tasks[this.taskObj.index].comments
@@ -50,8 +52,12 @@ export class TodayTasksCommentsComponent implements OnInit {
 
 	cancelEditMode() {
 		this.editMode = false;
-   this.commentForm.reset(this.commentFormInitial);
+    this.commentForm.reset(this.commentFormInitial);
 	}
+
+  cancelAddComment() {
+    this.closeTaskCommentSection.emit(this.taskObj.index);
+  }
 
 	editComment() {
 		this.taskObj.tasks[this.taskObj.index].comments[this.commentIndex] = this.commentForm.value;
@@ -68,7 +74,7 @@ export class TodayTasksCommentsComponent implements OnInit {
 
   private createForm() {
     this.commentForm = this.fb.group({
-      commentText: ['', [Validators.required]],
+      commentText: ['', [Validators.required, Validators.minLength(3)]],
     });
 
     this.commentFormInitial = this.commentForm.value;

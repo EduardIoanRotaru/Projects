@@ -45,15 +45,22 @@ Finish ToDoApp
 		Done - Not Clear of relationships: Project with many tasks not right in db
 
 	Done - Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
-	Add comments to today tasks.
-	Upcoming - Logged in, add tasks with calendar date, display them by date. 
+	Done - Add comments to today tasks. + CRUD
+
+	Design the today tasks final 
+	Design sidebar
+	Validations + errors, disable btn, min len and required, aaaand getters for the form fields.
+	Add comment bugged
+	Cancel adding a comment
+
 	Projects - Logged in, add a project name, description + tasks
+	Upcoming - Logged in, add tasks with calendar date, display them by date. 
 
 	Hide completed or not
 	Add priority
 	Final touches for design 
 
-	Features - Add other users to projects
+	Features - Add other users to projects, give them permissions, can edit task, can comment (wife hushand example)
 		 - Assign today tasks to a Project
 		 - Adding a date, except today will move it in upcoming tasks.
 

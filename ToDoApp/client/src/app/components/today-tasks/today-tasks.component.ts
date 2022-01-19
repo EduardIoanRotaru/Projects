@@ -17,13 +17,15 @@ export class TodayTasksComponent implements OnInit {
 	todayTasks: ITodayTask[] = [];
 
 	editMode: boolean = false;
-	editObj: {todayTask: ITodayTask, index: number} = {} as {todayTask: ITodayTask, index: number};
+	editObj: { todayTask: ITodayTask; index: number } = {} as { todayTask: ITodayTask; index: number };
 
 	priorityEnum = Label;
 	keys: any[];
 
 	// showCommentComponent: boolean = false;
 	showCommentComponent: any[] = [];
+
+	currentDate = new Date();
 
 	constructor(private fb: FormBuilder, private taskService: TaskService, private toastrService: OurToastrService) {
 		this.keys = Object.keys(this.priorityEnum).filter((f) => !isNaN(Number(f)));
@@ -34,13 +36,21 @@ export class TodayTasksComponent implements OnInit {
 		this.initializeTodayTasks();
 	}
 
-	displayCommentsComponent(index: any){
+	get name() {
+		return this.taskForm.get('name');
+	}
+
+	get label() {
+		return this.taskForm.get('label');
+	}
+
+	displayCommentsComponent(index: any) {
 		this.showCommentComponent[index] = !this.showCommentComponent[index];
-	  }
+	}
 
 	removeItem(index: number) {
 		this.todayTasks.splice(index, 1);
-		this.taskService.updateTodayTask(this.todayTasks);	
+		this.taskService.updateTodayTask(this.todayTasks);
 	}
 
 	onSubmit() {
@@ -72,7 +82,7 @@ export class TodayTasksComponent implements OnInit {
 
 	editTask() {
 		this.todayTasks[this.editObj.index] = this.taskForm.value;
-		this.taskService.updateTodayTask(this.todayTasks).subscribe(result => {
+		this.taskService.updateTodayTask(this.todayTasks).subscribe((result) => {
 			this.editMode = false;
 			this.taskForm.reset(this.taskFormInitial);
 			this.toastrService.showSuccess(result);
@@ -85,7 +95,7 @@ export class TodayTasksComponent implements OnInit {
 
 	private createForm() {
 		this.taskForm = this.fb.group({
-			name: [ '', [ Validators.required ] ],
+			name: [ '', [ Validators.required, Validators.minLength(3)] ],
 			label: [ '', [] ]
 		});
 
