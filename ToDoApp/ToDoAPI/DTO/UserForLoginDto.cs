@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ToDoAPI.DTO
 {
     public class UserForLoginDto

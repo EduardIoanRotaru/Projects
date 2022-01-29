@@ -1,3 +1,6 @@
+using Core.Entities;
+using Core.Interfaces;
+using Core.Interfaces.Repository;
 using Infrastructure.Data;
 using Infrastructure.Data.Repository;
 using Infrastructure.Data.SeedData;
@@ -16,7 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCors();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 // Alternative for keeping secret tokens rather than appSettings
 // https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows

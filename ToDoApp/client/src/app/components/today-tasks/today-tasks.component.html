@@ -10,7 +10,6 @@
                     <div class="input-group">
                         <input type="text" id="name" formControlName="name" class="form-control"
                             placeholder="Task Name: e.g boil eggs">
-                          
                         <select class="form-select" formControlName="label">
                             <option value='' disabled selected>Priority</option>
                             <option *ngFor="let name of keys" [value]="name"> {{priorityEnum[name]}} </option>
@@ -22,6 +21,22 @@
                     <span style="color:red" *ngIf="name?.errors?.['minlength'] && name?.touched">
                         Minimum length is 3
                     </span>
+                  
+                    <div class="form-check form-switch ml-3 mb-2 mt-2">
+                        <input  class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (click)="toggleDateInput()">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Add future task</label>
+                    </div>
+                
+                    <div *ngIf="enableFutureTask" class="row form-group">
+                        <label class="font-weight-bold">Select Date</label>
+                        <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+                          <input type="text"
+                                 placeholder="Datepicker"
+                                 class="form-control"
+                                 bsDatepicker
+                                 [bsConfig]="{ isAnimated: true }">
+                        </div>
+                      </div>
                 </div>
                 <button class="btn btn-outline-primary mr-2" *ngIf="!editMode" type="submit">Add New Task</button>
                 <button class="btn btn-outline-success mr-2" *ngIf="editMode" type="button" (click)="editTask()">Edit

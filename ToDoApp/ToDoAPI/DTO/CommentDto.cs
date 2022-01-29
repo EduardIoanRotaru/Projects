@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public string CommentText { get; set; }
-
-        public Task Task { get; set; }
+        public int TaskId { get; set; }
     }
 }

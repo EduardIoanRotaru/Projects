@@ -2,16 +2,14 @@
 using System.Security.Claims;
 using System.Text;
 using Core.Entities;
-using Infrastructure.Data.Repository;
+using Core.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using ToDoAPI.DTO;
 
 namespace ToDoAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : RootController
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;

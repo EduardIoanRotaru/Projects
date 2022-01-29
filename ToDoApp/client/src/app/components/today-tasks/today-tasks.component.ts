@@ -22,10 +22,10 @@ export class TodayTasksComponent implements OnInit {
 	priorityEnum = Label;
 	keys: any[];
 
-	// showCommentComponent: boolean = false;
 	showCommentComponent: any[] = [];
-
 	currentDate = new Date();
+
+	enableFutureTask: boolean = false;
 
 	constructor(private fb: FormBuilder, private taskService: TaskService, private toastrService: OurToastrService) {
 		this.keys = Object.keys(this.priorityEnum).filter((f) => !isNaN(Number(f)));
@@ -87,6 +87,10 @@ export class TodayTasksComponent implements OnInit {
 			this.taskForm.reset(this.taskFormInitial);
 			this.toastrService.showSuccess(result);
 		});
+	}
+
+	toggleDateInput(){
+		this.enableFutureTask = !this.enableFutureTask;
 	}
 
 	private patchForm(task: ITodayTask) {

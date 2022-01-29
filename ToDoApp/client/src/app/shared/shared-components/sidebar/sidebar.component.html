@@ -8,28 +8,27 @@
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-left align-items-right">
                     <li class="nav-item">
                         <a [routerLink]="['/today-tasks']" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                            <i class="bi-house fs-1"> Today</i>
+                            <i class="bi-house fs-2"> Add tasks</i>
                         </a>
                     </li>
                     <li>
                         <a [routerLink]="['/upcoming-tasks']" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                            <i class="bi-speedometer2 fs-1"> Upcoming</i>
+                            <i class="bi-speedometer2 fs-2"> Upcoming</i>
                         </a>
                     </li>
                     <li>
                         <a [routerLink]="['/projects']" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                            <i class="bi-table fs-1"> Projects</i>
+                            <i class="bi-table fs-2"> Projects</i>
                         </a>
                     </li>
                     <li>
                         <a [routerLink]="['/login']" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-                            <i class="bi-person-circle fs-1"> 
-                                <span *ngIf="isLoggedIn"> {{authService.decodedToken?.name}}</span>
+                            <i class="bi-person-circle fs-2"> 
+                                <span *ngIf="isLoggedIn"> Welcome {{authService.decodedToken?.name}}</span>
                                 <span *ngIf="!isLoggedIn" > Log In</span>
                             </i>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>

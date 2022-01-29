@@ -18,8 +18,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { RouterModule } from '@angular/router';
 import { TodayTasksComponent } from './components/today-tasks/today-tasks.component';
 import { UpcomingTasksComponent } from './components/upcoming-tasks/upcoming-tasks.component';
-import { ProjectsComponent } from './components/projects/projects.component';
 import { TodayTasksCommentsComponent } from './components/today-tasks/today-tasks-comments/today-tasks-comments.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -54,6 +54,7 @@ export function tokenGetter() {
     }),
     RouterModule,
     AppRoutingModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [AuthService, ErrorInterceptor, OurToastrService],
   bootstrap: [AppComponent]
