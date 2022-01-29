@@ -23,7 +23,8 @@ namespace Infrastructure.Data.Repository
             foreach(var item in taskId)
             {
                 var task = await _context.Tasks.FirstOrDefaultAsync(x => x.ProjectId == projectId && x.Id == item);
-                tasks.Add(task);
+                if(task != null)
+                    tasks.Add(task);
             }
 
             return tasks;
