@@ -70,5 +70,13 @@ namespace Infrastructure.Data.Repository
 
             return false;
         }
+
+        public async Task<IReadOnlyList<User>> SearchUserByName(string searchText)
+        {
+            return await _context.Users
+                    .Where(c => c.Username.Contains(searchText))
+                    .Select(p => p)
+                    .ToListAsync();
+        }
     }
 }

@@ -1,4 +1,3 @@
-using Core.Entities;
 using Core.Interfaces;
 using Core.Interfaces.Repository;
 using Infrastructure.Data;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.Net;
 using System.Text;
 using ToDoAPI.Helpers;
@@ -19,15 +19,23 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCors();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddTransient<IAuthRepository, AuthRepository>();
+builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
+builder.Services.AddTransient<ICommentRepository, CommentsRepository>();
+// builder.Services.AddTransient<IUpcomingTasksRepository, UpcomingTasksRepository>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 // Alternative for keeping secret tokens rather than appSettings
 // https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-6.0&tabs=windows
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => {
-        options.TokenValidationParameters = new TokenValidationParameters {
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
                 builder.Configuration.GetSection("AppSettings:Token").Value)),
@@ -36,21 +44,30 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddControllers();
+builder.Services.AddMvc()
+     .AddNewtonsoftJson(
+          options =>
+          {
+              options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+          });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using(var scope = app.Services.CreateScope()) {
+using (var scope = app.Services.CreateScope())
+{
     var services = scope.ServiceProvider;
     var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-    try {
+    try
+    {
         var context = services.GetRequiredService<DataContext>();
         await context.Database.MigrateAsync();
         await DataContextSeed.SeedAsync(context, loggerFactory);
     }
-    catch(Exception ex) {
+    catch (Exception ex)
+    {
         var logger = loggerFactory.CreateLogger<Program>();
         logger.LogError(ex, "An error occured during migration");
     }
@@ -63,16 +80,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseExceptionHandler(builder =>  {
-    builder.Run(async context => {
+app.UseExceptionHandler(builder =>
+{
+    builder.Run(async context =>
+    {
         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
         var error = context.Features.Get<IExceptionHandlerFeature>();
-        if(error !=null){
+        if (error != null)
+        {
             context.Response.AddApplicationError(error.Error.Message);
-            
+
             await context.Response.WriteAsync(error.Error.Message);
-        } 
+        }
     });
 });
 

@@ -1,7 +1,9 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using AutoMapper;
 using Core.Entities;
+using Core.Interfaces;
 using Core.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -13,11 +15,14 @@ namespace ToDoAPI.Controllers
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
-
-        public AuthController(IAuthRepository authRepository, IConfiguration config)
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        public AuthController(IAuthRepository authRepository, IConfiguration config, IMapper mapper, IUnitOfWork unitOfWork)
         {
             this._authRepository = authRepository;
             this._config = config;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -46,10 +51,10 @@ namespace ToDoAPI.Controllers
         {
             var user = await _authRepository.Login(userForLoginDto.Username, userForLoginDto.Password);
 
-            if(user == null)
+            if (user == null)
                 return Unauthorized();
 
-            var claims = new[] 
+            var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username)
@@ -60,7 +65,8 @@ namespace ToDoAPI.Controllers
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var tokenDescriptor = new SecurityTokenDescriptor {
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
@@ -70,8 +76,20 @@ namespace ToDoAPI.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
+            });
+        }
+
+        [HttpGet("searchUser")]
+        public async Task<IActionResult> SearchUserByName(string userName)
+        {
+            var usernamesResponse = await _unitOfWork.AuthRepository.SearchUserByName(userName);
+
+            return Ok(new UserNamesResponse
+            {
+                Items = _mapper.Map<IReadOnlyList<BasicResponse>>(usernamesResponse)
             });
         }
     }

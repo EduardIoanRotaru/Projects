@@ -23,7 +23,8 @@
       "dom"
     ],
     "strictPropertyInitialization": false,
-    // "skipLibCheck": true
+    // "skipLibCheck": true,
+    // "allowJs":true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

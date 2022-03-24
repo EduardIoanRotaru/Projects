@@ -1,10 +1,12 @@
+
 using Core.Entities;
 using Core.Interfaces.Repository;
 
 namespace Core.Interfaces
 {
-    public interface IProjectRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public interface IProjectRepository : IGenericRepository<Project>
     {
-        Task<T> GetProjectWithTasks(int id);
+        Task<Project> GetProjectWithTasks(int id);
+        Task<IReadOnlyList<Project>> SearchProjectByName(string searchText);
     }
 }

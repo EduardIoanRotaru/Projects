@@ -11,7 +11,7 @@ namespace ToDoAPI.Controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProjectsController(IMapper mapper, IUnitOfWork unitOfWork) 
+        public ProjectsController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -22,11 +22,25 @@ namespace ToDoAPI.Controllers
         {
             var projects = await _unitOfWork.ProjectRepository.GetAllAsync();
 
-            return Ok(_mapper.Map<IReadOnlyList<ProjectDto>>(projects));
+            var projectListDto = _mapper.Map<List<ProjectDto>>(projects);
+
+            var inactiveTasks = await _unitOfWork.TaskRepository.GetInactiveTasks();
+            var inactiveProject = new ProjectInactiveDto();
+            inactiveProject.Tasks = _mapper.Map<IReadOnlyList<TaskDto>>(inactiveTasks);
+            projectListDto.Add(inactiveProject);
+
+            var trashTasks = await _unitOfWork.TaskRepository.GetTrashTasks();
+            var trashProject = new ProjectTrashDto();
+            trashProject.Tasks = _mapper.Map<IReadOnlyList<TaskDto>>(trashTasks);
+            projectListDto.Add(trashProject);
+
+            // tasks with no projects
+
+            return Ok(projectListDto);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProjectById(int id) 
+        public async Task<IActionResult> GetProjectById(int id)
         {
             var project = await _unitOfWork.ProjectRepository.GetProjectWithTasks(id);
 
@@ -34,17 +48,46 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpPut("{projectId}")]
-        public async Task<IActionResult> UpdateProject(int projectId, ProjectDto projectDto) 
+        public async Task<IActionResult> UpdateProject(int projectId, ProjectDto projectDto)
         {
             var project = await _unitOfWork.ProjectRepository.GetByIdAsync(projectId);
 
-            if(project == null) return NotFound();
+            if (project == null) return NotFound();
 
             project.Name = projectDto.Name;
             project.Description = projectDto.Description;
             project.Completed = projectDto.Completed;
 
-            if(await _unitOfWork.Complete()) return NoContent();
+            foreach (var item in projectDto.Tasks)
+            {
+                if (item.Id == 0)
+                {
+                    var taskToAdd = _mapper.Map<Core.Entities.Task>(item);
+                    taskToAdd.ProjectId = projectId;
+
+                    // fucked up
+                    _unitOfWork.TaskRepository.AddAsync(taskToAdd);
+                }
+                else
+                {
+                    // fucked up
+                    var task = await _unitOfWork.TaskRepository.GetByIdAsync(item.Id);
+
+                    task.Name = item.Name;
+                    task.Completed = item.Completed;
+                    // UTC BULLSHIT!!
+                    task.DateToComplete = item.DateToComplete.AddDays(1);
+                    task.Label = item.Label;
+                    task.ProjectId = projectId;
+
+                    // fucked up
+                    _unitOfWork.TaskRepository.Update(task);
+                }
+            }
+
+            _unitOfWork.ProjectRepository.Update(project);
+
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Couldn't edit the project");
         }
@@ -53,26 +96,28 @@ namespace ToDoAPI.Controllers
         public async Task<IActionResult> CompleteProject(int projectId, bool completed)
         {
             var project = await _unitOfWork.ProjectRepository.GetByIdAsync(projectId);
-            
-            if(project == null) return NotFound();
+
+            if (project == null) return NotFound();
 
             project.Completed = completed;
 
-            if(await _unitOfWork.Complete()) return NoContent();
+            _unitOfWork.ProjectRepository.Update(project);
+
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Couldn't mark your project as complete");
         }
 
         [HttpDelete("{projectId}")]
-        public async Task<IActionResult> DeleteProject(int projectId) 
+        public async Task<IActionResult> DeleteProject(int projectId)
         {
             var project = await _unitOfWork.ProjectRepository.GetByIdAsync(projectId);
 
-            if(project == null) return NotFound();
+            if (project == null) return NotFound();
 
             _unitOfWork.ProjectRepository.DeleteAsync(project);
 
-            if(await _unitOfWork.Complete()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Couldn't delete your project");
         }
@@ -84,7 +129,7 @@ namespace ToDoAPI.Controllers
 
             _unitOfWork.ProjectRepository.AddAsync(project);
 
-            if(await _unitOfWork.Complete())
+            if (await _unitOfWork.Complete())
                 return CreatedAtAction(
                     nameof(GetProjectById),
                     new { id = project.Id },
@@ -93,11 +138,23 @@ namespace ToDoAPI.Controllers
                         Id = project.Id,
                         Name = project.Name,
                         Description = project.Description,
-                        Completed = project.Completed
+                        Completed = project.Completed,
+                        Tasks = _mapper.Map<IReadOnlyList<TaskDto>>(project.Tasks)
                     }
                 );
 
             return BadRequest("Couldn't add your project");
+        }
+
+        [HttpGet("searchProject")]
+        public async Task<IActionResult> SearchProjectByName(string searchText)
+        {
+            var projectDtos = await _unitOfWork.ProjectRepository.SearchProjectByName(searchText);
+
+            return Ok(new ProjectSearchDto
+            {
+                Items = _mapper.Map<IReadOnlyList<BasicResponse>>(projectDtos)
+            });
         }
     }
 }

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Data.Config 
+namespace Infrastructure.Data.Config
 {
     public class TaskConfiguration : IEntityTypeConfiguration<Core.Entities.Task>
     {
@@ -12,6 +12,7 @@ namespace Infrastructure.Data.Config
             builder.HasOne(x => x.Project)
                 .WithMany(x => x.Tasks)
                 .HasForeignKey(x => x.ProjectId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasMany(x => x.Comments)

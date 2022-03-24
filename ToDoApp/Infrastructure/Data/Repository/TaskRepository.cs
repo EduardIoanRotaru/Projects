@@ -1,17 +1,18 @@
 using AutoMapper;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Repository
 {
-    public class TaskRepository : GenericRepository<Core.Entities.Task>, 
-                                  ITaskRepository<Core.Entities.Task>
+    public class TaskRepository : GenericRepository<Core.Entities.Task>,
+                                  ITaskRepository
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
 
-        public TaskRepository(DataContext context, IMapper mapper) :base(context, mapper)
-        { 
+        public TaskRepository(DataContext context, IMapper mapper) : base(context, mapper)
+        {
             _context = context;
             _mapper = mapper;
         }
@@ -20,21 +21,129 @@ namespace Infrastructure.Data.Repository
         {
             var tasks = new List<Core.Entities.Task>();
 
-            foreach(var item in taskId)
+            foreach (var id in taskId)
             {
-                var task = await _context.Tasks.FirstOrDefaultAsync(x => x.ProjectId == projectId && x.Id == item);
-                if(task != null)
+                var task = await _context.Tasks.FirstOrDefaultAsync(x => x.ProjectId == projectId && x.Id == id);
+                tasks.Add(task);
+            }
+
+            return tasks;
+        }
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetTasksToDeleteByRangeIds(int[] taskId)
+        {
+            var tasks = new List<Core.Entities.Task>();
+
+            foreach (var id in taskId)
+            {
+                var task = await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id && x.Trash == true);
+                if (task != null)
                     tasks.Add(task);
             }
 
             return tasks;
         }
 
-        public async Task<Core.Entities.Task> GetTasksWithComments(int id)
+        public async Task<IEnumerable<Core.Entities.Task>> GetTasksWithComments()
         {
-           return await _context.Tasks
-                            .Include(t => t.Comments)
-                            .FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Tasks
+                             .Include(t => t.Comments)
+                             .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetInactiveTasks(int projectId)
+        {
+            return await _context.Tasks
+                            .Where(t => t.Inactive == true && t.Trash == false && t.ProjectId == projectId)
+                            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetInactiveTasks()
+        {
+            return await _context.Tasks
+                            .Where(t => t.Inactive == true && t.Trash == false)
+                            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetTrashTasks()
+        {
+            return await _context.Tasks
+                            .Where(t => t.Trash == true)
+                            .ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<Core.Entities.Task>> SearchTasksByName(string searchText, int projectId)
+        {
+            return await _context.Tasks
+                .Where(c => c.Name.Contains(searchText) && c.ProjectId != projectId)
+                    .Select(p => p)
+                    .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Core.Entities.Task>> GetTasksByRange(int[] taskId)
+        {
+            var tasks = new List<Core.Entities.Task>();
+
+            foreach (var id in taskId)
+            {
+                var task = await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+                if (task != null)
+                    tasks.Add(task);
+            }
+
+            return tasks;
+        }
+
+        public async Task<IReadOnlyList<UpcomingTask>> GetAllOrderedByDateAscending()
+        {
+            var result = await _context.Tasks.Include(c => c.Comments).ToListAsync();
+
+            return result.GroupBy(t => t.DateToComplete.Date)
+                        .Select(r => r).Select(r => new UpcomingTask
+                        {
+                            Date = r.Key,
+                            Count = r.Count(),
+                            Tasks = r.Select(r => r).ToList()
+                        }).OrderBy(d => d.Date).ToList();
+
+        }
+
+        public async Task<IReadOnlyList<UpcomingTask>> GetAllOrderedByDateDescending()
+        {
+            var result = await _context.Tasks.Include(c => c.Comments).ToListAsync();
+
+            return result.GroupBy(t => t.DateToComplete.Date)
+                       .Select(r => r).Select(r => new UpcomingTask
+                       {
+                           Date = r.Key,
+                           Count = r.Count(),
+                           Tasks = r.Select(r => r).ToList()
+                       }).OrderByDescending(d => d.Date).ToList();
+        }
+
+        public async Task<IReadOnlyList<UpcomingTask>> GetAllOrderedByDateAndNotcompleted()
+        {
+            return await _context.Tasks.Include(c => c.Comments)
+                                        .Where(t => t.Completed != true)
+                                        .GroupBy(t => t.DateToComplete.Date)
+                                        .Select(g => new UpcomingTask
+                                        {
+                                            Date = g.Key,
+                                            Tasks = g.OrderBy(d => d.DateToComplete).ToList()
+                                        }).ToListAsync();
+        }
+
+        // this is fucked up, no groupping needed
+        public async Task<IReadOnlyList<UpcomingTask>> GetAllOrderedByLabel()
+        {
+            return await _context.Tasks
+                            .OrderBy(l => (int)l.Label)
+                                        .GroupBy(t => t.DateToComplete.Date)
+                                        .Select(g => new UpcomingTask
+                                        {
+                                            Date = g.Key,
+                                            Tasks = g.OrderBy(d => d.DateToComplete).ToList()
+                                        }).ToListAsync();
         }
     }
 }

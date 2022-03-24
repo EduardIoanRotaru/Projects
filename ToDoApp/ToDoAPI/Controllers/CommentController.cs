@@ -12,50 +12,52 @@ namespace ToDoAPI.Controllers
         public readonly IMapper _mapper;
         public readonly IUnitOfWork _unitOfWork;
 
-        public CommentController(IMapper mapper, IUnitOfWork unitOfWork )
+        public CommentController(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost]
+        [HttpPost("addOrUpdate")]
         public async Task<IActionResult> AddComment(CommentDto commentDto)
         {
-            var comment = _mapper.Map<CommentDto, Comment>(commentDto);
+            var commentInDatabase = await _unitOfWork.CommentRepository.GetByIdAsync(commentDto.Id);
 
-            _unitOfWork.CommentRepository.AddAsync(comment);
+            if (commentInDatabase == null)
+            {
+                var comment = _mapper.Map<CommentDto, Comment>(commentDto);
+                _unitOfWork.CommentRepository.AddAsync(comment);
 
-            if (await _unitOfWork.Complete()) 
-                return CreatedAtAction(
-                    nameof(GetCommentById),
-                    new { id = comment.Id },
-                    new CommentDto {
-                        Id = comment.Id,
-                        CommentText = comment.CommentText,
-                        TaskId = comment.TaskId
-                    });
+                if (await _unitOfWork.Complete())
+                {
+
+                    return CreatedAtAction(
+                        nameof(GetCommentById),
+                        new { id = comment.Id },
+                        new CommentDto
+                        {
+                            Id = comment.Id,
+                            CommentText = comment.CommentText,
+                            TaskId = comment.TaskId
+                        });
+                }
+            }
+            else
+            {
+                commentInDatabase.CommentText = commentDto.CommentText;
+
+                _unitOfWork.CommentRepository.Update(commentInDatabase);
+
+                if (await _unitOfWork.Complete()) return NoContent();
+
+                return BadRequest("Couldn't update your comment");
+            }
 
             return BadRequest("Couldn't save your comment");
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateComment(CommentDto commentDto) 
-        {
-            var commentInDatabase = await _unitOfWork.CommentRepository.GetByIdAsync(commentDto.Id);
-
-            if(commentInDatabase == null) return NotFound();
-
-            commentInDatabase.CommentText = commentDto.CommentText;
-
-            _unitOfWork.CommentRepository.UpdateAsync(commentInDatabase);
-            
-            if (await _unitOfWork.Complete()) return NoContent();
-
-            return BadRequest("Couldn't update your comment");
-        }
-
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCommentById(int id) 
+        public async Task<IActionResult> GetCommentById(int id)
         {
             var comment = await _unitOfWork.CommentRepository.GetByIdAsync(id);
 
@@ -63,7 +65,7 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpGet("getCommentsByTaskId/{taskId}")]
-        public async Task<IActionResult> GetCommentsByTaskId(int taskId) 
+        public async Task<IActionResult> GetCommentsByTaskId(int taskId)
         {
             var comments = await _unitOfWork.CommentRepository.GetCommentsByTaskId(taskId);
 
@@ -71,15 +73,15 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpDelete("{commentId}")]
-        public async Task<IActionResult> DeleteComment(int commentId) 
+        public async Task<IActionResult> DeleteComment(int commentId)
         {
             var comment = await _unitOfWork.CommentRepository.GetByIdAsync(commentId);
 
-            if(comment == null) return NotFound();
+            if (comment == null) return NotFound();
 
             _unitOfWork.CommentRepository.DeleteAsync(comment);
 
-            if(await _unitOfWork.Complete()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Couldn't delete comment");
         }

@@ -16,6 +16,17 @@ namespace ToDoAPI.Helpers
                 .ForMember(c => c.TaskId, o => o.MapFrom(x => x.TaskId));
             CreateMap<Project, ProjectDto>();
             CreateMap<ProjectDto, Project>();
+            CreateMap<UpcomingTask, UpcomingTaskDto>();
+            CreateMap<UpcomingTaskDto, UpcomingTask>();
+
+            CreateMap<Project, ProjectSearchDto>();
+            CreateMap<Project, BasicResponse>();
+
+            CreateMap<Core.Entities.Task, TasksSearchDto>();
+            CreateMap<Core.Entities.Task, BasicResponse>();
+
+            CreateMap<User, BasicResponse>()
+                .ForMember(c => c.Name, o => o.MapFrom(x => x.Username));
         }
     }
 }

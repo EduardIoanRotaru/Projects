@@ -79,14 +79,21 @@ namespace Infrastructure.Data.Migrations
                     b.Property<DateTime>("DateToComplete")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Inactive")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Label")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProjectId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Trash")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -120,6 +127,21 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TaskUser", b =>
+                {
+                    b.Property<int>("TasksId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TasksId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("TaskUser");
+                });
+
             modelBuilder.Entity("Core.Entities.Comment", b =>
                 {
                     b.HasOne("Core.Entities.Task", "Task")
@@ -139,6 +161,21 @@ namespace Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("TaskUser", b =>
+                {
+                    b.HasOne("Core.Entities.Task", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.Project", b =>

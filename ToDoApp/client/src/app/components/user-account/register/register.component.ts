@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { OurToastrService } from 'src/app/shared/services/toastr.service';
 
@@ -17,8 +17,13 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-    })
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
+    }, { validators: passwordMatchingValidator })
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
   }
 
   onSubmit() {
@@ -29,3 +34,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 }
+
+export const passwordMatchingValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const password = control.get('password');
+  const confirmPassword = control.get('confirmPassword');
+
+  return password?.value === confirmPassword?.value ? null : { notmatched: true };
+};

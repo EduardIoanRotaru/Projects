@@ -7,5 +7,6 @@ namespace Core.Interfaces.Repository
         Task<User> Register(User user, string password);
         Task<User> Login(string username, string password);
         Task<bool> UserExists(string username);
+        Task<IReadOnlyList<User>> SearchUserByName(string searchText);
     }
 }

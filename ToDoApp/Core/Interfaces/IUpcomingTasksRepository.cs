@@ -1,11 +1,10 @@
 using Core.Entities;
+using Core.Interfaces.Repository;
 
 namespace Core.Interfaces
 {
-    public interface IUpcomingTasksRepository<T> where T : BaseEntity
+    public interface IUpcomingTasksRepository : IGenericRepository<UpcomingTask>
     {
-        Task<IReadOnlyList<T>> GetAllOrderedByDate();
-        Task<IReadOnlyList<T>> GetAllOrderedByLabel();
-        Task<IReadOnlyList<T>> GetAllOrderedByDateAndNotcompleted();
+
     }
 }

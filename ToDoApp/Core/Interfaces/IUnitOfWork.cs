@@ -5,12 +5,12 @@ namespace Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IAuthRepository AuthRepository {get;}
-        IProjectRepository<Project> ProjectRepository {get;}
-        ITaskRepository<Core.Entities.Task> TaskRepository {get;}
-        ICommentRepository CommentRepository {get;}
-        IUpcomingTasksRepository<Core.Entities.Task> UpcomingTasksRepository {get;}
-        Task<bool> Complete();  
-        bool HasChanges();
+        IAuthRepository AuthRepository { get; }
+        IProjectRepository ProjectRepository { get; }
+        ITaskRepository TaskRepository { get; }
+        ICommentRepository CommentRepository { get; }
+        // IUpcomingTasksRepository UpcomingTasksRepository { get; }
+        Task<bool> Complete();
+        // bool HasChanges();
     }
 }

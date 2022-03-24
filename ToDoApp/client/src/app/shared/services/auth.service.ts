@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, noop, Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { IUserNamesResponse } from '../models/dtos/UserNamesResponse';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 	isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.loggedIn());
 	decodedToken: any;
 
-	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+	constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
 	login(model: any) {
 		return this.http.post<any>(this.url + 'login', model).pipe(
@@ -40,5 +41,19 @@ export class AuthService {
 		localStorage.removeItem('token');
 		this.decodedToken = undefined;
 		this.isLoggedIn.next(false);
+	}
+
+	getUsersByName(name: string) {
+		console.log(name);
+		return this.http.get<IUserNamesResponse>(
+			'https://localhost:7284/api/auth/searchUser', {
+			params: { userName: name }
+		}).pipe(
+			map((data: IUserNamesResponse) => (data && data.items || [])),
+			tap(() => noop, err => {
+				// in case of http error
+				return err && err.message || 'Something goes wrong';
+			})
+		);
 	}
 }

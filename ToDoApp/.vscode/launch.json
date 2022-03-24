@@ -4,7 +4,8 @@
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
-            "request": "attach"
+            "request": "attach",
+            "enableStepFiltering": false
         },
         {
             // Use IntelliSense to find out which attributes exist for C# debugging
@@ -36,5 +37,6 @@
             "type": "coreclr",
             "request": "attach"
         }
+        
     ]
 }

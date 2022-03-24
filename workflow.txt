@@ -46,23 +46,32 @@ Finish ToDoApp
 
 	Done - Today Component - Can add anonymous, limit of 10 tasks, remove after 24h 
 	Done - Add comments to today tasks. + CRUD
+	Done - Design the today tasks final 
+	Done - Validations + errors, disable btn, min len and required, aaaand getters for the form fields.
+	Done - Add comment bugged
+	Done - Cancel adding a comment
+	Done - Design sidebar	
 
-	Design the today tasks final 
-	Design sidebar
-	Validations + errors, disable btn, min len and required, aaaand getters for the form fields.
-	Add comment bugged
-	Cancel adding a comment
+	Add repository and unit of work pattern
+		- TaskRepository
+		- Projects Repository
+		- UpcomingTasksRepository		
 
-	Projects - Logged in, add a project name, description + tasks
-	Upcoming - Logged in, add tasks with calendar date, display them by date. 
+	Done - API (tasks, upcomingtasks, projects)
+	Done - Test in Postman
 
-	Hide completed or not
-	Add priority
-	Final touches for design 
+	Client - Add Services
+	       - Add Components, design each one on spot
+	       - Add security
+	       - Final touches
+	       - Publish
 
-	Features - Add other users to projects, give them permissions, can edit task, can comment (wife hushand example)
-		 - Assign today tasks to a Project
+	Features - Add other users to projects, give them permissions/claims, can add/delete/edit task, or just can comment, show usernames
+		 - Assign today tasks to a Project(add extra fields such as duedate)
 		 - Adding a date, except today will move it in upcoming tasks.
+		 - Email validation when user creates account
+
+	Publish version 2
 
 Add Authentication and Authorization business logic(jwt, Identity, OAuth2 or simply cookies/localstorage)
 Postman test each one
@@ -106,3 +115,23 @@ git add -u .
 git rm -r --cached path_to_your_folder/
 
 enable-migrations -MigrationsDirectory "Data"
+
+When using debugger in vscode attach the project where is the breakpoint
+
+Docummentation
+Refresh MVC - https://www.youtube.com/watch?v=E7Voso411Vs&ab_channel=ProgrammingwithMosh
+Rfresh Firebase - https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase#10
+OAuth - https://www.youtube.com/watch?v=NRU_KdUSjD4&ab_channel=ValentinDespa
+AutoMapper Quick tips - https://code-maze.com/automapper-net-core/
+Git Branches - https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches
+EF relationships Refresh - https://www.learnentityframeworkcore.com/configuration/one-to-many-relationship-configuration
+                         - https://entityframework.net/one-to-many-relationship
+
+Bootstrap icons - https://icons.getbootstrap.com/#install
+	  grid  - https://getbootstrap.com/docs/4.0/layout/grid/
+		- https://www.tutorialrepublic.com/faq/how-to-center-a-column-in-bootstrap.php
+
+https://json-generator.com/
+Angular refresh - https://angular.io/guide/inputs-outputs
+		- https://fireship.io/lessons/basics-reactive-forms-in-angular/
+		- https://angular.io/guide/form-validation
